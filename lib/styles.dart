@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 Color appPrimaryColor = Color(0xFF406a65);
 Color appPrimaryColor2 = Color(0xFF70938b);
+Color appPrimaryColor3 = Color(0xFFba7b45);
 
 double get_scale_factor(BuildContext context){
   double screenWidth = MediaQuery.of(context).size.width;
