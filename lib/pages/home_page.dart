@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:monthy/pages/show_expense_page.dart';
 import 'package:monthy/styles.dart';
+import 'package:monthy/widgets/appbar.dart';
 import 'package:monthy/widgets/container_with_margin_padding_text.dart';
 import 'package:monthy/widgets/name_title.dart';
 
@@ -43,10 +45,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(child: Scaffold(
-      appBar: AppBar(
-        title: NameTitle(context),
-        backgroundColor: appPrimaryColor,
-      ),
+      appBar: appbar(context),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,9 +54,31 @@ class _HomePageState extends State<HomePage> {
             ContainerWithMarginPaddingText(context, 10,10, "Expense Stat", false, appPrimaryColor3),
             for(StatData s in expenseStatData)
               StatInfoShow(s.title, s.data),
+            TextButton(
+                onPressed: (){
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => ShowExpensePage(),
+                    ),
+                  );
+                },
+                child: Container(
+                  margin: EdgeInsets.only(right: 50),
+                  alignment: Alignment.centerRight,
+                  child: Text("Show More Details", style: TextStyle(color: appPrimaryColor3, fontWeight: FontWeight.bold),),
+                ),
+            ),
             ContainerWithMarginPaddingText(context, 10,10, "Tuition Stat", false, appPrimaryColor3),
             for(StatData s in tuitionStatData)
               StatInfoShow(s.title, s.data),
+            TextButton(
+              onPressed: (){},
+              child: Container(
+                margin: EdgeInsets.only(right: 50),
+                alignment: Alignment.centerRight,
+                child: Text("Show More Details", style: TextStyle(color: appPrimaryColor3, fontWeight: FontWeight.bold),),
+              ),
+            ),
           ],
         ),
       ),
